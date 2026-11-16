@@ -1,5 +1,5 @@
-// 오프라인용 서비스 워커 — 버전: 20261116-141654
-const CACHE = "hc-map-20261116-141654";
+// 오프라인용 서비스 워커 — 버전: 20261116-143233
+const CACHE = "hc-map-20261116-143233";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "apple-touch-icon.png"];
 
 self.addEventListener("install", e => {

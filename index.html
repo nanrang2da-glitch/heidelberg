@@ -1089,8 +1089,8 @@ function renderPanel(){
     <div class="parts">${PARTS.map(p=>`<button class="pc" data-go="${p.id}" style="--c:var(--${p.id.toLowerCase()})"><b>${p.name}</b><span>${ldsTxt(p.ld)} · ${ldRange(p.ld[0])[0]}–${ldRange(p.ld[1])[1]}문</span><p>${p.intro.split(". ")[0]}.</p></button>`).join("")}</div>
     ${versesFromBuiltin?"":`<h3 class="sec">개역개정 본문</h3><div class="vbox">${VERSES
       ?`<b>본문을 불러왔습니다.</b> 이 기기에 저장되어 있어요. 구절을 누르면 본문이 보입니다.<div class="row"><button class="btn" data-vclear>본문 지우기</button></div>`
-      :`성경 근거 구절의 본문은 이 기기에서 <b>개역개정_구절.js</b> 파일을 한 번 불러오면 보입니다. 파일은 인터넷에 올라가지 않고 이 기기에만 저장돼요.<div class="row"><label class="btn" for="vfile">개역개정 본문 불러오기</label></div>`}
-      <input type="file" id="vfile" accept=".js,.json,text/javascript,application/json,text/plain"><div id="vmsg"></div></div>`}
+      :`성경 근거 구절의 본문은 이 기기에서 <b>개역개정_구절.txt</b> 파일을 한 번 불러오면 보입니다. 파일은 인터넷에 올라가지 않고 이 기기에만 저장돼요.<div class="row"><label class="btn" for="vfile">개역개정 본문 불러오기</label></div>`}
+      <input type="file" id="vfile" accept=".txt,.js,.json,text/plain,application/json,text/javascript,application/javascript,application/x-javascript"><div id="vmsg"></div></div>`}
     <h3 class="sec">관계선 읽는 법</h3>
     <div class="mini-legend"><div><svg viewBox="0 0 30 8"><path d="M1 4H29" class="rel f"/></svg>전개 — 앞 내용이 다음으로 이어짐</div><div><svg viewBox="0 0 30 8"><path d="M1 4H29" class="rel e"/></svg>대응 — 다른 곳에서 다시 울림</div><div><svg viewBox="0 0 30 8"><path d="M1 4H29" class="rel c"/></svg>대조 — 서로 반대되는 내용</div></div>
     <h3 class="sec">이렇게 사용하세요</h3>
@@ -1128,7 +1128,7 @@ panel.addEventListener("click",e=>{
 panel.addEventListener("change",async e=>{
   if(e.target.id==="vfile"&&e.target.files[0]){const msg=document.getElementById("vmsg");
     try{const ok=importVerses(await e.target.files[0].text());renderPanel();if(!ok)document.getElementById("vmsg").textContent="본문은 불러왔지만 저장 공간이 부족해 다음에 열 때 다시 불러와야 합니다.";}
-    catch(err){msg.textContent="이 파일은 읽을 수 없어요. ‘개역개정_구절.js’ 파일을 골라 주세요.";}
+    catch(err){msg.textContent="이 파일은 읽을 수 없어요. ‘개역개정_구절.txt’ 파일을 골라 주세요.";}
     return;}
 });
 panel.addEventListener("click",e=>{if(e.target.closest("[data-vclear]")){VERSES=null;try{localStorage.removeItem(VKEY);}catch(err){}renderPanel();}});
